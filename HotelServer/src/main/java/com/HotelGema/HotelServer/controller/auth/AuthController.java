@@ -16,19 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
-
-    //Quite el Final para que dejara de dar problema
-    private AuthService authService;
+    
+    private final AuthService authService;
 
     @PostMapping("/signup")
     public ResponseEntity<?> signupUser(@RequestBody SignupRequest signupRequest) {
-        try {
+        try{
             UserDto createdUser = authService.createUser(signupRequest);
             return new ResponseEntity<>(createdUser, HttpStatus.OK);
-        } catch (EntityExistsException entityExistsException) {
-            return new ResponseEntity<>("User already exists", HttpStatus.NOT_ACCEPTABLE);
-        } catch (Exception e) {
-            return new ResponseEntity<>("User not created, come again later", HttpStatus.BAD_REQUEST);
+        }catch(EntityExistsException entityExistsException){
+            return new ResponseEntity<>("Usuario ya existente", HttpStatus.NOT_ACCEPTABLE);
+        }catch (Exception e){
+            return new ResponseEntity<>("Usuario no creado, intentalo mas tarde", HttpStatus.BAD_REQUEST);
         }
     }
 }

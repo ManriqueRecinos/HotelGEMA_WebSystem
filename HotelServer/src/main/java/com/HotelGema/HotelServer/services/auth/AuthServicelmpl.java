@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServicelmpl {
+public class AuthServicelmpl implements AuthService {
 
     private final UserRepository userRepository;
 
