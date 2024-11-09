@@ -7,7 +7,14 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -37,7 +44,7 @@
               }
             ],
             "styles": [
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/theme.less",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -102,7 +109,6 @@
               }
             ],
             "styles": [
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -112,6 +118,6 @@
     }
   },
   "cli": {
-    "analytics": "8a6cd7ac-17a3-4fbb-9c08-b52c1a402bc5"
+    "analytics": "cb13c836-ffbd-446c-aa1d-e2b70fe87056"
   }
 }

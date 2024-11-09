@@ -1,0 +1,39 @@
+<div class="center-form">
+    <img src="../../../assets/logo.png" alt="Logo" class="logo" />
+    <h2>Ingresa Detalles para Registrarte</h2>
+    <form nz-form [formGroup]="registerForm" class="custom-form">
+
+        <!-- Label para ingresar Nombre -->
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Por favor ingresa tu nombre">
+            <nz-input-group nzPrefixIcon="idcard">
+                <input type="text" nz-input formControlName="name" placeholder="Ingrese su nombre"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Label para ingresar Email -->
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingresa tu correo">
+              <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="email" placeholder="Ingrese su correo"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Label para ingresar Contraseña -->
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingresa tu contraseña">
+              <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="password" placeholder="Ingrese su contraseña"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Boton para registrar -->
+           <button nz-button nzType="primary" nzBlock [disabled]="registerForm.invalid" class="w-100">
+                Resgistrar
+           </button>
+           
+    </form>
+</div>
