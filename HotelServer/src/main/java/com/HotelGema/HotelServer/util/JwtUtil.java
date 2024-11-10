@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class JwUtil {
+public class JwtUtil {
 
     private String generateToken(Map<String, Object> extraClaims, UserDetails details) {
         return Jwts.builder().setClaims(extraClaims).setSubject(details.getUsername())
