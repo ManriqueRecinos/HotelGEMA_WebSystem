@@ -1,5 +1,6 @@
 <nz-layout>
-  <nz-sider nzCollapsible nzWidth="200px">
+<!-- Nav -->
+  <nz-sider nzCollapsible nzWidth="200px" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="/register">
@@ -12,6 +13,46 @@
       </li>
     </ul>
   </nz-sider>
+
+  <!-- Nav de Admin -->
+  <nz-sider nzCollapsible nzWidth="200px" *ngIf="isAdminLoggedIn">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item routerLink="/admin/cuartos">
+        <span nz-icon nzType="apartment"></span>
+        <span><strong>Cuartos</strong></span>
+      </li>
+      <li nz-menu-item routerLink="/admin/reservaciones">
+        <span nz-icon nzType="pull-request"></span>
+        <span><strong>Reservaciones</strong></span>
+      </li>
+      <li nz-menu-item (click)="logout()">
+        <span nz-icon nzType="logout"></span>
+        <span><strong>Logout</strong></span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <!-- Nav Customer -->
+  <nz-sider nzCollapsible nzWidth="200px" *ngIf="isCustomerLoggedIn">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item routerLink="/customer/cuartos">
+        <span nz-icon nzType="apartment"></span>
+        <span><strong>Cuartos</strong></span>
+      </li>
+      <li nz-menu-item routerLink="/customer/reservas">
+        <span nz-icon nzType="pull-request"></span>
+        <span><strong>Reservas</strong></span>
+      </li>
+      <li nz-menu-item (click)="logout()">
+        <span nz-icon nzType="logout"></span>
+        <span><strong>Logout</strong></span>
+      </li>
+    </ul>
+  </nz-sider>
+
+
   <nz-layout>
     <nz-content>
       <router-outlet></router-outlet>

@@ -10,50 +10,69 @@ export class UserStorageService {
 
   constructor() { }
 
-  static saveToken(token:string): void{
-    window.localStorage.removeItem(TOKEN);
-    window.localStorage.setItem(TOKEN, token);
+  private static isLocalStorageAvailable(): boolean {
+    return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
   }
 
-  static saveUser(user:any): void{
-    window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER, JSON.stringify(user));
+  static saveToken(token: string): void {
+    if (this.isLocalStorageAvailable()) {
+      window.localStorage.removeItem(TOKEN);
+      window.localStorage.setItem(TOKEN, token);
+    }
   }
 
-  static getToken(): string{
-    return localStorage.getItem(TOKEN);
+  static saveUser(user: any): void {
+    if (this.isLocalStorageAvailable()) {
+      window.localStorage.removeItem(USER);
+      window.localStorage.setItem(USER, JSON.stringify(user));
+    }
   }
 
-  static getUser(): any{
-    return JSON.parse(localStorage.getItem(USER));
+  static getToken(): string | null {
+    if (this.isLocalStorageAvailable()) {
+      return localStorage.getItem(TOKEN);
+    }
+    return null;
   }
 
-  static getUserId(): string{
+  static getUser(): any | null {
+    if (this.isLocalStorageAvailable()) {
+      const user = localStorage.getItem(USER);
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
+  }
+
+  static getUserId(): string {
     const user = this.getUser();
-    if(user==null){return ''}
-    return user.id;
+    return user ? user.id : '';
   }
 
-  static getUserRole(): string{
+  static getUserRole(): string {
     const user = this.getUser();
-    if(user==null){return ''}
-    return user.role;
+    return user ? user.role : '';
   }
 
-  static isAdminLoggedIn(): boolean{
-    if(this.getToken === null){return false;}
+  static isAdminLoggedIn(): boolean {
+    if (this.getToken() === null) {
+      return false;
+    }
     const role: string = this.getUserRole();
-    return role == 'ADMIN';
+    return role === 'ADMIN';
   }
 
-  static isCustomerLoggedIn(): boolean{
-    if(this.getToken === null){return false;}
+  static isCustomerLoggedIn(): boolean {
+    if (this.getToken() === null) {
+      return false;
+    }
     const role: string = this.getUserRole();
-    return role == 'CUSTOMER';
+    return role === 'CUSTOMER';
   }
 
-  static signOut(): void{
-    window.localStorage.removeItem(TOKEN);
-    window.localStorage.removeItem(USER);
+  static signOut(): void {
+    if (this.isLocalStorageAvailable()) {
+      window.localStorage.removeItem(TOKEN);
+      window.localStorage.removeItem(USER);
+    }
   }
 }
