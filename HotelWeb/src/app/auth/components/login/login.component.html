@@ -1,0 +1,29 @@
+<div class="center-form">
+    <img src="../../../assets/logo.png" alt="Logo" class="logo" />
+    <h2>Ingresa tus datos para Iniciar Sesion</h2>
+    <form nz-form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="custom-form">
+
+        <!-- Label para ingresar Email -->
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingresa tu correo">
+              <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="email" placeholder="Ingrese su correo"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Label para ingresar Contraseña -->
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingresa tu contraseña">
+              <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="password" placeholder="Ingrese su contraseña"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Boton para registrar -->
+           <button nz-button nzType="primary" nzBlock [disabled]="loginForm.invalid" class="w-100">
+                Iniciar
+           </button>
+    </form>
+</div>

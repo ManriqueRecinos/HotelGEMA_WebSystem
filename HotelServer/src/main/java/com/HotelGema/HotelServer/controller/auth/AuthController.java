@@ -7,6 +7,7 @@ import com.HotelGema.HotelServer.dto.UserDto;
 import com.HotelGema.HotelServer.entity.User;
 import com.HotelGema.HotelServer.repository.UserRepository;
 import com.HotelGema.HotelServer.services.auth.AuthService;
+import com.HotelGema.HotelServer.services.jwt.UserService;
 import com.HotelGema.HotelServer.util.JwtUtil;
 import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,9 @@ public class AuthController {
 
     private final UserRepository userRepository;
 
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
+
+    private final UserService userService;
 
     @PostMapping("/signup")
     public ResponseEntity<?> signupUser(@RequestBody SignupRequest signupRequest) {
@@ -56,7 +59,7 @@ public class AuthController {
             throw new BadCredentialsException("Usuario o contraseña incorrectos", e);
         }
 
-        final UserDetails userDetails = null;
+        final UserDetails userDetails = userService.userDetailsService().loadUserByUsername(authenticationRequest.getEmail());
         Optional<User> optionalUser = userRepository.findFirstByEmail(userDetails.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
 
