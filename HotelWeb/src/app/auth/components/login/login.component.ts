@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from '../../services/auth/auth.service';
+import { UserStorageService } from '../../services/storage/user-storage.service';
 
 
 @Component({
@@ -29,9 +30,17 @@ export class LoginComponent {
     submitForm(){
       this.authService.login(this.loginForm.value).subscribe(res=>{
         console.log(res);
+        if(res.userId != null){
+          const user = {
+            userId: res.userId,
+            role: res.userRole
+          }
+
+          UserStorageService.saveUser(user);
+          UserStorageService.saveToken(res.jwt);
+        }
       },error=>{
         this.message.error("Credenciales Incorrectas",{nzDuration:5000})
       })
     }
-
 }
