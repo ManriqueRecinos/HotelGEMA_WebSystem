@@ -27,16 +27,16 @@ public class WebSecurityConfiguration {
 
     private final UserService userService;
 
-    private final JwAutenticationFilter jwAutenticationFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(request ->
-                request.requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers( "/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
-                        .requestMatchers("/api/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
-                        .anyRequest().authenticated())
-                .sessionManagement(manager-> manager.sessionCreationPolicy(STATELESS))
+                        request.requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/api/admin/**").hasAuthority(UserRole.ADMIN.name())
+                                .requestMatchers("/api/customer/**").hasAuthority(UserRole.CUSTOMER.name())
+                                .anyRequest().authenticated())
+                .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class);
         return http.build();
