@@ -28,8 +28,20 @@ export class UpdateRoomComponent {
       type: ['', Validators.required],
       price: ['', Validators.required]
     });
+    this.getRoomById();
   }
 
   submitForm(): void {
   }
+
+  getRoomById() {
+    this.adminService.getRoomById(this.id).subscribe(
+        res => {
+            this.updateRoomForm.patchValue(res);
+        },
+        error => {
+            this.message.error(`${error.error}`, { nzDuration: 5000 });
+        }
+    );
+}
 }

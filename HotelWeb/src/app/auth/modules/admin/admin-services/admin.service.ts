@@ -25,11 +25,17 @@ export class AdminService {
     })
   }
 
+  getRoomById(id:string): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/room/${id}`,{
+      headers: this.createAuthorizationHeader(),
+    });
+}
+
   createAuthorizationHeader(){
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
       'Authorization',
-      'Bearer ' + UserStorageService.getToken()
+      'Bearer ' +UserStorageService.getToken()
     )
   }
 }
