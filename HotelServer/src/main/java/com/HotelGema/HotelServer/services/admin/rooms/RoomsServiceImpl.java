@@ -36,7 +36,7 @@ public class RoomsServiceImpl implements RoomsService{
     }
 
     public RoomsResponseDto getAllRooms(int pageNumber){
-        Pageable pageable = PageRequest.of(pageNumber, 1);
+        Pageable pageable = PageRequest.of(pageNumber, 8);
         Page<Room> roomPage= roomRepository.findAll(pageable);
 
         RoomsResponseDto roomsResponseDto = new RoomsResponseDto();
@@ -61,8 +61,8 @@ public class RoomsServiceImpl implements RoomsService{
             Room existingRoom = optionalRoom.get();
 
             existingRoom.setName(roomDto.getName());
-            existingRoom.setPrice(roomDto.getPrice());
             existingRoom.setType(roomDto.getType());
+            existingRoom.setPrice(roomDto.getPrice());
 
             roomRepository.save(existingRoom);
             return true;
