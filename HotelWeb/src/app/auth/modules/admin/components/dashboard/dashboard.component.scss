@@ -1,0 +1,73 @@
+/* Centrar el contenedor principal del formulario */
+.center-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Botón "Post Habitacion" */
+.post-room-btn {
+    margin-bottom: 20px;
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-room-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Contenedor de habitaciones */
+.room-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Tarjetas de habitaciones */
+.room-row nz-card {
+    width: 300px;
+    margin: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+    color: #e2e8f0;
+    border-radius: 8px;
+}
+
+.room-row nz-card:hover {
+    transform: scale(1.03);
+}
+
+/* Título y descripción de la tarjeta */
+.room-row nz-card-meta {
+    color: #9ca3af;
+}
+
+/* Iconos de editar y eliminar */
+.icon {
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icon[nzType="edit"]:hover {
+    color: #3b82f6;
+}
+
+.icon[nzType="delete"]:hover {
+    color: #ff4d4f;
+}
+
+/* Avatar */
+.nz-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
