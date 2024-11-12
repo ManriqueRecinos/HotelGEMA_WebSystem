@@ -44,6 +44,7 @@ public class RoomsServiceImpl implements RoomsService{
         roomsResponseDto.setPageNumber(roomPage.getPageable().getPageNumber());
         roomsResponseDto.setTotalPages(roomPage.getTotalPages());
         roomsResponseDto.setRoomDtoList(roomPage.stream().map(Room::getRoomDto).collect(Collectors.toList()));
+
         return roomsResponseDto;
     }
 
