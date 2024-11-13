@@ -42,7 +42,7 @@ export class RegisterComponent {
     ).subscribe({
       next: (res) => {
         if (res.id != null) {
-          this.message.success("Registro realizado con éxito", { nzDuration: 5000 });
+          this.message.success("Registro exitoso", { nzDuration: 5000 });
           this.router.navigateByUrl("/");
         } else {
           this.message.error(`${res.message}`, { nzDuration: 5000 });
