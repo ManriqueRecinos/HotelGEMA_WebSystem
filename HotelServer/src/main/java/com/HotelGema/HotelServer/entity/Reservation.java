@@ -18,7 +18,7 @@ public class Reservation {
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private Long price;
-    private ReservationStatus status;
+    private ReservationStatus reservationStatus;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "room_id", nullable = false)
