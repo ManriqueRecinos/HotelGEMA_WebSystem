@@ -32,7 +32,7 @@ export class LoginComponent {
         console.log(res);
         if(res.userId != null){
           const user = {
-            userId: res.userId,
+            id: res.userId,
             role: res.userRole
           }
 
@@ -42,7 +42,7 @@ export class LoginComponent {
           if(UserStorageService.isAdminLoggedIn()){
             this.router.navigateByUrl('/admin/dashboard');
           }else if(UserStorageService.isCustomerLoggedIn()){
-            this.router.navigateByUrl('/customer/cuartos');
+            this.router.navigateByUrl('/customer/rooms');
           }
         }
       },error=>{

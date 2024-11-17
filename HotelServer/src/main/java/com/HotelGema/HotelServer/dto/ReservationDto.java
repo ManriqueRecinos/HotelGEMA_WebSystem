@@ -20,6 +20,6 @@ public class ReservationDto {
     private String roomType;
     private String roomName;
     private Long userId;
-    private String userName;
+    private String username;
 
 }

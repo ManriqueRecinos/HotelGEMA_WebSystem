@@ -1,5 +1,6 @@
 package com.HotelGema.HotelServer.util;
 
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -37,6 +38,7 @@ public class JwtUtil {
     private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token).getBody();
     }
+
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

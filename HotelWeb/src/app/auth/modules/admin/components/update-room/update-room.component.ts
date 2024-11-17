@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UpdateRoomComponent implements OnInit {
 
   updateRoomForm: FormGroup;
-  id: number; // Se declara la propiedad sin inicializarla
+  id: number;
 
   constructor(
     private fb: FormBuilder,
