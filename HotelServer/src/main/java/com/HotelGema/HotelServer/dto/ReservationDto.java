@@ -13,7 +13,7 @@ public class ReservationDto {
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private Long price;
-    private ReservationStatus status;
+    private ReservationStatus ReservationStatus;
 
     private Long roomId;
 
