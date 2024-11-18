@@ -12,7 +12,7 @@ import { error } from 'console';
 })
 export class RoomsComponent {
   
-  currentPage = 1;
+  currentPage = 5;
   rooms = [];
   total:any;
   loading = false;
