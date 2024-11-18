@@ -32,4 +32,13 @@ pageIndexChange(value:any){
   this.getReservations();
 }
 
+changeReservationStatus(bookingId:number, status:string){
+  this.adminService.changeReservationStatus(bookingId,status).subscribe(res=>{
+    this.message.success(`Estado de reservacion actualizado con exito`,{nzDuration:2000});
+    this.getReservations();
+  },error=>{
+    this.message.error(`${error.error}`,{nzDuration:2000});
+  })
+}
+
 }

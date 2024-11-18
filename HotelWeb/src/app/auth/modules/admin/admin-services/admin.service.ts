@@ -43,7 +43,12 @@ export class AdminService {
     })
   }
 
-  
+  changeReservationStatus(reservationId:number, status:string): Observable<any>{
+    return this.http.get(BASIC_URL+ `api/admin/reservation/${reservationId}/${status}`,{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   updateRoomDetails(id:number,roomDto:any): Observable<any> {
     return this.http.put(BASIC_URL + `api/admin/room/${id}`, roomDto, {
       headers: this.createAuthorizationHeader(),
