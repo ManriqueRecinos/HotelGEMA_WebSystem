@@ -1,5 +1,5 @@
 package com.HotelGema.HotelServer.controller.admin;
-
+import com.HotelGema.HotelServer.enums.ReservationStatus;
 import com.HotelGema.HotelServer.services.admin.reservation.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +21,16 @@ public class ReservationController {
         try{
             return ResponseEntity.ok(reservationService.getAllReservations(pageNumber));
         }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Algo ha salido mal!");
+        }
+    }
+
+    @GetMapping("/reservation/{id}/{status}")
+    public ResponseEntity<?> changeReservationStatus(@PathVariable Long id, @PathVariable String status) {
+        boolean success = reservationService.changeReservationStatus(id, status);
+        if(success){
+            return ResponseEntity.ok().build();
+        }else{
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Algo ha salido mal!");
         }
     }
