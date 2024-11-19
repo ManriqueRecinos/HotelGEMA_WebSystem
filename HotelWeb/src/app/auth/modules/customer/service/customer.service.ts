@@ -18,6 +18,13 @@ export class CustomerService {
     })
   }
 
+  getMyBookings(pageNumber:number): Observable<any>{
+    const userId = UserStorageService.getUserId();
+    return this.http.get(BASIC_URL+ `api/customer/bookings/${userId}/${pageNumber}`,{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   bookRoom(bookinDto:any): Observable<any>{
     return this.http.post(BASIC_URL+ `api/customer/book`, bookinDto,{
       headers: this.createAuthorizationHeader(),
