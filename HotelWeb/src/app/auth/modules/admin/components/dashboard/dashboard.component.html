@@ -29,7 +29,6 @@
     </div>
 
     <div class="pagination">
-        <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="6" (nzPageIndexChange)="pageIndexChange($event)">
-        </nz-pagination>
+        <nz-pagination (nzPageIndexChange)="pageIndexChange($event)" [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="5"></nz-pagination>
     </div>
 </div>

@@ -12,7 +12,7 @@ export class DashboardComponent {
 
   currentPage = 1;
   rooms = [];
-  total:any;
+  total: any;
   loading = false;
 
 
@@ -27,7 +27,7 @@ export class DashboardComponent {
     this.adminService.getRooms(this.currentPage -1 ).subscribe(res => {
       console.log(res);
       this.rooms = res.roomDtoList;
-      this.total = res.totalPages * 1;
+      this.total = res.totalPages * 5;
    })
   }
 
@@ -35,6 +35,7 @@ export class DashboardComponent {
     this.currentPage = value;
     this.getRooms();
   }
+  
 
   showConfirm(roomId:number){
     this.modalService.confirm({
