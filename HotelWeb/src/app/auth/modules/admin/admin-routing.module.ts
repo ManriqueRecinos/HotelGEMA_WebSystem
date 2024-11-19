@@ -5,11 +5,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PostRoomComponent } from './components/post-room/post-room.component';
 import { UpdateRoomComponent } from './components/update-room/update-room.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
+import { PostCategoryComponent } from './components/post-category/post-category.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'room', component: PostRoomComponent },
+  { path: 'category', component: PostCategoryComponent },
   { path: 'room/:id/edit', component: UpdateRoomComponent },
   { path: 'reservations', component: ReservationsComponent },
 ];

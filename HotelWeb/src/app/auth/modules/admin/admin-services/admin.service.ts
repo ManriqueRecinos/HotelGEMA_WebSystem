@@ -13,6 +13,9 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
+
+  
+
   postRoomDetails(rommDto:any): Observable<any>{
     return this.http.post(BASIC_URL+ "api/admin/room", rommDto,{
       headers: this.createAuthorizationHeader(),
@@ -21,6 +24,12 @@ export class AdminService {
 
   getRooms(pageNumber:number): Observable<any>{
     return this.http.get(BASIC_URL+ `api/admin/rooms/${pageNumber}`,{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  addCategory(categoryDto:any): Observable<any>{
+    return this.http.post(BASIC_URL + 'api/admin/category', categoryDto,{
       headers: this.createAuthorizationHeader(),
     })
   }
@@ -55,7 +64,7 @@ export class AdminService {
     });
   }
   
-  createAuthorizationHeader(){
+ private createAuthorizationHeader(){
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
       'Authorization',

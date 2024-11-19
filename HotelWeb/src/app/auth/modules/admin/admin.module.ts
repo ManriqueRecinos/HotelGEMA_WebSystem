@@ -10,11 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateRoomComponent } from './components/update-room/update-room.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
 
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { PostCategoryComponent } from './components/post-category/post-category.component';
+
 
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
+    PostCategoryComponent,
     PostRoomComponent,
     UpdateRoomComponent,
     ReservationsComponent
@@ -24,7 +28,8 @@ import { ReservationsComponent } from './components/reservations/reservations.co
     AdminRoutingModule,
     DemoNgZorroAntdModule,
     ReactiveFormsModule,
-    FormsModule
+    NzMessageModule,
+    FormsModule,
   ]
 })
 export class AdminModule { }

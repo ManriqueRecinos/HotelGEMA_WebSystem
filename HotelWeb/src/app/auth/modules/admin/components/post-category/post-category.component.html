@@ -1,0 +1,33 @@
+<div class="room-details-form-container">
+  
+  <nz-form nzLayout="vertical" class="room-details-form" [formGroup]="categoryForm">
+    <div class="form-title">Ingresa detalles de la categoría</div>
+
+    <!-- Campo: Nombre -->
+    <nz-form-item>
+      <nz-form-control [nzSpan]="16" [nzOffset]="4">
+        <input nz-input formControlName="name" placeholder="Nombre de categoría" />
+        <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched" class="error">
+          Este campo es requerido.
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- Campo: Descripción -->
+    <nz-form-item>
+      <nz-form-control [nzSpan]="16" [nzOffset]="4">
+        <input nz-input formControlName="description" placeholder="Descripción de categoría" />
+        <div *ngIf="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched" class="error">
+          Este campo es requerido.
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- Botón: Agregar -->
+    <nz-form-item>
+      <nz-form-control [nzSpan]="16" [nzOffset]="4">
+        <button nz-button nzType="primary" type="submit" (click)="submitForm()">Agregar Categoría</button>
+      </nz-form-control>
+    </nz-form-item>
+  </nz-form>
+</div>

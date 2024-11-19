@@ -3,7 +3,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { CustomerService } from '../../service/customer.service';
 import { UserStorageService } from '../../../../services/storage/user-storage.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-rooms',
@@ -12,7 +11,7 @@ import { error } from 'console';
 })
 export class RoomsComponent {
   
-  currentPage = 5;
+  currentPage = 1;
   rooms = [];
   total:any;
   loading = false;
@@ -29,7 +28,7 @@ export class RoomsComponent {
     this.customerService.getRooms(this.currentPage -1 ).subscribe(res => {
       console.log(res);
       this.rooms = res.roomDtoList;
-      this.total = res.totalPages * 1;
+      this.total = res.totalPages * 5;
    })
   }
 

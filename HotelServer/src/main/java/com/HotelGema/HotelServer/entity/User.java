@@ -2,10 +2,7 @@ package com.HotelGema.HotelServer.entity;
 
 import com.HotelGema.HotelServer.dto.UserDto;
 import com.HotelGema.HotelServer.enums.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +23,10 @@ public class User implements UserDetails {
     private String password;
     private String name;
     private UserRole userRole;
+
+    @Lob
+    @Column(columnDefinition = "longblob")
+    private byte[] image;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

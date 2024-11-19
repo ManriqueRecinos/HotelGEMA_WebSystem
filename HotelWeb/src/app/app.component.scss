@@ -1,8 +1,11 @@
-.logo{
+.logo {
     height: 32px;
     margin: 16px;
     background: rgba(255, 255, 255, 0.3);
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 nz-header{
     background: #fff;
@@ -26,3 +29,26 @@ nz-breadcrumb{
 nz-footer{
     text-align: center;
 }
+
+/* Estilo para alinear el submenú con los demás ítems */
+nz-sider ul {
+    li[nz-submenu] {
+      padding-left: 0; /* Quita el desplazamiento del submenú */
+      
+      .ant-menu-submenu-title {
+        font-weight: bold;
+      }
+    }
+  
+    li[nz-menu-item] {
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .ant-menu-submenu-title {
+    padding-left: 16px; /* Ajusta según el nivel del menú */
+  }
+  
+  
